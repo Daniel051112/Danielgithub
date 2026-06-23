@@ -5,9 +5,14 @@ const unsigned long interval = 500;
 bool ledState = LOW;
 
 void setup() {
-  
+  pinMode(ledPin, OUTPUT);
 }
 
 void loop() {
-
+  unsigned long currentTime = millis();
+  if(currentTime - lastTime >= interval){
+    lastTime = currentTime;
+    ledState = !ledState;
+    digitalWrite(ledPin, ledState);
+  }
 }
